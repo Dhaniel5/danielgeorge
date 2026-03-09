@@ -22,7 +22,7 @@ const AboutSection = () => {
               <span className="text-primary font-medium">Sphere Of Web3</span>, a platform focused on building decentralized applications that solve real-world problems.
             </p>
             <p>
-              With over 20 years of experience as a Special Education Needs teacher, Daniel is passionate about inclusive technology and empowering underserved communities through emerging technologies like blockchain and artificial intelligence.
+              With over 4 years of experience as a Special Education Needs teacher, Daniel is passionate about inclusive technology and empowering underserved communities through emerging technologies like blockchain and artificial intelligence.
             </p>
             <p>
               His mission is to bridge the gap between innovation and real-world impact.
