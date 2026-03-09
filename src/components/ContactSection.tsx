@@ -7,7 +7,7 @@ const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const mailtoLink = `mailto:contact@sphereofweb3.com?subject=Portfolio Contact from ${form.name}&body=${encodeURIComponent(form.message)}%0A%0AFrom: ${form.email}`;
+    const mailtoLink = `mailto:danielgeorge557@gmail.com?subject=Portfolio Contact from ${form.name}&body=${encodeURIComponent(form.message)}%0A%0AFrom: ${form.email}`;
     window.location.href = mailtoLink;
   };
 
@@ -87,9 +87,9 @@ const ContactSection = () => {
           className="flex justify-center gap-6 mt-10"
         >
           {[
-            { name: "LinkedIn", href: "https://linkedin.com" },
-            { name: "Twitter / X", href: "https://x.com" },
-            { name: "Telegram", href: "https://t.me" },
+            { name: "LinkedIn", href: "https://www.linkedin.com/in/george-agbo-a03a23281" },
+            { name: "Twitter / X", href: "https://x.com/0xbeastbillion" },
+            { name: "Telegram", href: "https://t.me/Beastbillion" },
           ].map((link) => (
             <a
               key={link.name}
