@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, Tag, ArrowRight, Heart, MessageCircle, PenSquare } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
-import { BlogPost } from '@/integrations/supabase/types';
+import type { Tables } from '@/integrations/supabase/types';
 import { useAuth } from '@/contexts/AuthContext';
+
+type BlogPost = Tables<'blog_posts'>;
 import Navbar from '@/components/Navbar';
 
 const Blog = () => {

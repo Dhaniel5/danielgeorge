@@ -6,8 +6,11 @@ import {
   ArrowLeft, Twitter, Send, Copy, Check, Pencil, Trash2
 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
-import { BlogPost as BlogPostType, BlogComment } from '@/integrations/supabase/types';
+import type { Tables } from '@/integrations/supabase/types';
 import { useAuth } from '@/contexts/AuthContext';
+
+type BlogPostType = Tables<'blog_posts'>;
+type BlogComment = Tables<'blog_comments'>;
 import { useToast } from '@/hooks/use-toast';
 import Navbar from '@/components/Navbar';
 
