@@ -14,6 +14,9 @@ const homeLinks = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { user, signOut } = useAuth();
+  const location = useLocation();
+  const isBlog = location.pathname.startsWith("/blog");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -24,13 +27,13 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass-card border-b border-border/50" : ""}`}>
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#hero" className="font-heading font-bold text-lg gradient-text">
+        <Link to="/" className="font-heading font-bold text-lg gradient-text">
           DGA
-        </a>
+        </Link>
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-6">
-          {navLinks.map((link) => (
+          {!isBlog && homeLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
@@ -39,6 +42,27 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          <Link
+            to="/blog"
+            className={`text-sm font-heading transition-colors ${isBlog ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
+          >
+            Blog
+          </Link>
+          {user ? (
+            <button
+              onClick={() => signOut()}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors font-heading"
+            >
+              Sign Out
+            </button>
+          ) : (
+            <Link
+              to="/blog/auth"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors font-heading"
+            >
+              Sign In
+            </Link>
+          )}
         </div>
 
         {/* Mobile toggle */}
@@ -50,7 +74,7 @@ const Navbar = () => {
       {/* Mobile menu */}
       {open && (
         <div className="md:hidden glass-card border-t border-border/50 px-6 py-4 space-y-3">
-          {navLinks.map((link) => (
+          {!isBlog && homeLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
@@ -60,6 +84,29 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          <Link
+            to="/blog"
+            onClick={() => setOpen(false)}
+            className={`block text-sm font-heading transition-colors ${isBlog ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
+          >
+            Blog
+          </Link>
+          {user ? (
+            <button
+              onClick={() => { signOut(); setOpen(false); }}
+              className="block text-sm text-muted-foreground hover:text-foreground transition-colors font-heading w-full text-left"
+            >
+              Sign Out
+            </button>
+          ) : (
+            <Link
+              to="/blog/auth"
+              onClick={() => setOpen(false)}
+              className="block text-sm text-muted-foreground hover:text-foreground transition-colors font-heading"
+            >
+              Sign In
+            </Link>
+          )}
         </div>
       )}
     </nav>
