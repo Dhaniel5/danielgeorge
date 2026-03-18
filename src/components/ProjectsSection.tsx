@@ -1,21 +1,37 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const projects = [
   {
-    name: "REKOD.AI",
-    description: "An AI-powered voice-to-text platform designed for meetings, churches, seminars, and workshops. The platform converts speech into accurate transcripts and will allow secure transcript storage using blockchain technology.",
-    color: "from-primary to-secondary",
+    name: "Sphere Of Web3",
+    description: "A forward-thinking technology initiative building decentralized solutions that address real-world challenges through blockchain, AI, and community-driven innovation — bridging emerging tech with practical, ethical impact.",
+    color: "from-secondary to-primary",
+    href: null,
   },
   {
-    name: "Sphere Of Web3",
-    description: "A technology initiative focused on building Web3 applications that solve real-world challenges using decentralized systems.",
-    color: "from-secondary to-primary",
+    name: "REKOD.AI",
+    description: "An AI-powered voice-to-text platform for meetings, seminars, churches, and workshops. Converts speech into accurate real-time transcripts with a vision for blockchain-secured, tamper-proof documentation.",
+    color: "from-primary to-secondary",
+    href: null,
   },
   {
     name: "EthosLayer",
-    description: "A platform designed to analyze and evaluate crypto tokens and Web3 projects based on transparency, trust, and ethical standards.",
+    description: "A transparency platform that analyzes and evaluates crypto tokens and Web3 projects based on governance, community integrity, and ethical standards — empowering users to make informed decisions.",
     color: "from-primary via-accent to-secondary",
+    href: null,
+  },
+  {
+    name: "SphereLearn",
+    description: "An educational initiative making AI and Web3 accessible to everyone. Providing structured pathways, webinars, and interactive sessions with a strong commitment to inclusion and underserved communities.",
+    color: "from-secondary via-accent to-primary",
+    href: "/spherelearn",
+  },
+  {
+    name: "Edvanta",
+    description: "An intelligent platform using AI to transform educational planning for individuals with additional needs. Streamlines IEP creation, progress tracking, and reporting — built on real-world special education experience.",
+    color: "from-accent to-secondary",
+    href: "/edvanta",
   },
 ];
 
@@ -36,7 +52,7 @@ const ProjectsSection = () => {
           <div className="w-16 h-1 rounded-full mb-12" style={{ background: "var(--gradient-primary)" }} />
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, i) => (
             <motion.div
               key={project.name}
@@ -58,9 +74,18 @@ const ProjectsSection = () => {
                 <p className="text-muted-foreground text-sm leading-relaxed flex-1 mb-5">
                   {project.description}
                 </p>
-                <button className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:gap-3 transition-all">
-                  Learn More <ExternalLink className="w-3.5 h-3.5" />
-                </button>
+                {project.href ? (
+                  <Link
+                    to={project.href}
+                    className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:gap-3 transition-all"
+                  >
+                    View Project <ExternalLink className="w-3.5 h-3.5" />
+                  </Link>
+                ) : (
+                  <span className="inline-flex items-center gap-2 text-muted-foreground text-sm font-medium">
+                    Coming Soon
+                  </span>
+                )}
               </div>
             </motion.div>
           ))}
