@@ -9,6 +9,8 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import BlogEditor from "./pages/BlogEditor";
 import BlogAuth from "./pages/BlogAuth";
+import SphereLearn from "./pages/SphereLearn";
+import Edvanta from "./pages/Edvanta";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +29,8 @@ const App = () => (
             <Route path="/blog/new" element={<BlogEditor />} />
             <Route path="/blog/edit/:id" element={<BlogEditor />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/spherelearn" element={<SphereLearn />} />
+            <Route path="/edvanta" element={<Edvanta />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

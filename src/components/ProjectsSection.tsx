@@ -52,7 +52,7 @@ const ProjectsSection = () => {
           <div className="w-16 h-1 rounded-full mb-12" style={{ background: "var(--gradient-primary)" }} />
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, i) => (
             <motion.div
               key={project.name}
@@ -74,9 +74,18 @@ const ProjectsSection = () => {
                 <p className="text-muted-foreground text-sm leading-relaxed flex-1 mb-5">
                   {project.description}
                 </p>
-                <button className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:gap-3 transition-all">
-                  Learn More <ExternalLink className="w-3.5 h-3.5" />
-                </button>
+                {project.href ? (
+                  <Link
+                    to={project.href}
+                    className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:gap-3 transition-all"
+                  >
+                    View Project <ExternalLink className="w-3.5 h-3.5" />
+                  </Link>
+                ) : (
+                  <span className="inline-flex items-center gap-2 text-muted-foreground text-sm font-medium">
+                    Coming Soon
+                  </span>
+                )}
               </div>
             </motion.div>
           ))}
