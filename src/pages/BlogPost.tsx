@@ -219,21 +219,6 @@ const BlogPostPage = () => {
                   )}
                 </div>
 
-                {/* Author controls */}
-                {user && user.id === post.author_id && (
-                  <div className="flex items-center gap-2">
-                    <Link to={`/blog/edit/${post.id}`}
-                      className="flex items-center gap-1 text-sm font-heading px-3 py-1.5 rounded-lg border border-border text-muted-foreground hover:text-primary hover:border-primary/30 transition-all"
-                    >
-                      <Pencil className="w-4 h-4" />
-                    </Link>
-                    <button onClick={handleDelete}
-                      className="flex items-center gap-1 text-sm font-heading px-3 py-1.5 rounded-lg border border-border text-muted-foreground hover:text-destructive hover:border-destructive/30 transition-all"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                  </div>
-                )}
               </div>
             </div>
           </motion.div>

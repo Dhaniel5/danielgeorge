@@ -28,7 +28,7 @@ const BlogEditor = () => {
   const [preview, setPreview] = useState(false);
 
   useEffect(() => {
-    if (!authLoading && !user) navigate('/blog');
+    if (!authLoading && !user) navigate('/blog/auth');
   }, [user, authLoading]);
 
   useEffect(() => {
@@ -99,7 +99,7 @@ const BlogEditor = () => {
       toast({ title: 'Save failed', description: error.message, variant: 'destructive' });
     } else {
       toast({ title: isEditing ? 'Post updated!' : 'Post saved!' });
-      navigate('/blog');
+      navigate('/blog/admin');
     }
     setSaving(false);
   };
@@ -118,7 +118,7 @@ const BlogEditor = () => {
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center justify-between mb-8 flex-wrap gap-4"
           >
-            <button onClick={() => navigate('/blog')} className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-heading">
+            <button onClick={() => navigate('/blog/admin')} className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-heading">
               <ArrowLeft className="w-4 h-4" />
               Back
             </button>
