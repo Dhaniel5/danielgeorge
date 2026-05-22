@@ -11,6 +11,12 @@ const homeLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
+const projectPages = [
+  { label: "SphereLearn", to: "/spherelearn" },
+  { label: "Edvanta", to: "/edvanta" },
+];
+
+
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -42,12 +48,22 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          {projectPages.map((p) => (
+            <Link
+              key={p.to}
+              to={p.to}
+              className={`text-sm font-heading transition-colors ${location.pathname === p.to ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
+            >
+              {p.label}
+            </Link>
+          ))}
           <Link
             to="/blog"
             className={`text-sm font-heading transition-colors ${isBlog ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
           >
             Blog
           </Link>
+
           {user && (
             <>
               <Link
@@ -85,6 +101,16 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          {projectPages.map((p) => (
+            <Link
+              key={p.to}
+              to={p.to}
+              onClick={() => setOpen(false)}
+              className={`block text-sm font-heading transition-colors ${location.pathname === p.to ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
+            >
+              {p.label}
+            </Link>
+          ))}
           <Link
             to="/blog"
             onClick={() => setOpen(false)}
@@ -92,6 +118,7 @@ const Navbar = () => {
           >
             Blog
           </Link>
+
           {user && (
             <>
               <Link
