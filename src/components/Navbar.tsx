@@ -11,6 +11,12 @@ const homeLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
+const projectPages = [
+  { label: "SphereLearn", to: "/spherelearn" },
+  { label: "Edvanta", to: "/edvanta" },
+];
+
+
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
