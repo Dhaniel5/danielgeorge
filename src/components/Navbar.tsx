@@ -101,6 +101,16 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          {projectPages.map((p) => (
+            <Link
+              key={p.to}
+              to={p.to}
+              onClick={() => setOpen(false)}
+              className={`block text-sm font-heading transition-colors ${location.pathname === p.to ? "text-primary" : "text-muted-foreground hover:text-foreground"}`}
+            >
+              {p.label}
+            </Link>
+          ))}
           <Link
             to="/blog"
             onClick={() => setOpen(false)}
@@ -108,6 +118,7 @@ const Navbar = () => {
           >
             Blog
           </Link>
+
           {user && (
             <>
               <Link
