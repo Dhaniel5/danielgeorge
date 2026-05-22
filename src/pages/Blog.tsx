@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Calendar, Clock, Tag, ArrowRight, Heart, MessageCircle, PenSquare } from 'lucide-react';
+import { Calendar, Clock, Tag, ArrowRight, Heart, MessageCircle } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import type { Tables } from '@/integrations/supabase/types';
-import { useAuth } from '@/contexts/AuthContext';
 
 type BlogPost = Tables<'blog_posts'>;
 import Navbar from '@/components/Navbar';
@@ -14,7 +13,6 @@ const Blog = () => {
   const [loading, setLoading] = useState(true);
   const [likeCounts, setLikeCounts] = useState<Record<string, number>>({});
   const [commentCounts, setCommentCounts] = useState<Record<string, number>>({});
-  const { user } = useAuth();
 
   useEffect(() => {
     fetchPosts();
@@ -71,23 +69,6 @@ const Blog = () => {
             </p>
           </motion.div>
 
-          {/* Write button for author */}
-          {user && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="flex justify-end mb-8"
-            >
-              <Link
-                to="/blog/new"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-heading font-medium text-sm hover:bg-primary/90 transition-colors"
-              >
-                <PenSquare className="w-4 h-4" />
-                Write Post
-              </Link>
-            </motion.div>
-          )}
-
           {/* Posts */}
           {loading ? (
             <div className="space-y-6">
@@ -106,14 +87,6 @@ const Blog = () => {
               className="text-center py-20"
             >
               <p className="text-muted-foreground text-lg">No posts yet. Check back soon!</p>
-              {user && (
-                <Link
-                  to="/blog/new"
-                  className="mt-4 inline-flex items-center gap-2 text-primary hover:underline font-heading"
-                >
-                  Write your first post <ArrowRight className="w-4 h-4" />
-                </Link>
-              )}
             </motion.div>
           ) : (
             <div className="space-y-8">

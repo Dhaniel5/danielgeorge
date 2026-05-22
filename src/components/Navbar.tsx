@@ -48,20 +48,21 @@ const Navbar = () => {
           >
             Blog
           </Link>
-          {user ? (
-            <button
-              onClick={() => signOut()}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors font-heading"
-            >
-              Sign Out
-            </button>
-          ) : (
-            <Link
-              to="/blog/auth"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors font-heading"
-            >
-              Sign In
-            </Link>
+          {user && (
+            <>
+              <Link
+                to="/blog/admin"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors font-heading"
+              >
+                Admin
+              </Link>
+              <button
+                onClick={() => signOut()}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors font-heading"
+              >
+                Sign Out
+              </button>
+            </>
           )}
         </div>
 
@@ -91,21 +92,22 @@ const Navbar = () => {
           >
             Blog
           </Link>
-          {user ? (
-            <button
-              onClick={() => { signOut(); setOpen(false); }}
-              className="block text-sm text-muted-foreground hover:text-foreground transition-colors font-heading w-full text-left"
-            >
-              Sign Out
-            </button>
-          ) : (
-            <Link
-              to="/blog/auth"
-              onClick={() => setOpen(false)}
-              className="block text-sm text-muted-foreground hover:text-foreground transition-colors font-heading"
-            >
-              Sign In
-            </Link>
+          {user && (
+            <>
+              <Link
+                to="/blog/admin"
+                onClick={() => setOpen(false)}
+                className="block text-sm text-muted-foreground hover:text-foreground transition-colors font-heading"
+              >
+                Admin
+              </Link>
+              <button
+                onClick={() => { signOut(); setOpen(false); }}
+                className="block text-sm text-muted-foreground hover:text-foreground transition-colors font-heading w-full text-left"
+              >
+                Sign Out
+              </button>
+            </>
           )}
         </div>
       )}
