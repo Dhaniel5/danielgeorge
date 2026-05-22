@@ -4,11 +4,13 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
+import RequireAuth from "@/components/RequireAuth";
 import Index from "./pages/Index";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import BlogEditor from "./pages/BlogEditor";
 import BlogAuth from "./pages/BlogAuth";
+import BlogAdmin from "./pages/BlogAdmin";
 import SphereLearn from "./pages/SphereLearn";
 import Edvanta from "./pages/Edvanta";
 import NotFound from "./pages/NotFound";
@@ -26,8 +28,9 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/auth" element={<BlogAuth />} />
-            <Route path="/blog/new" element={<BlogEditor />} />
-            <Route path="/blog/edit/:id" element={<BlogEditor />} />
+            <Route path="/blog/admin" element={<RequireAuth><BlogAdmin /></RequireAuth>} />
+            <Route path="/blog/new" element={<RequireAuth><BlogEditor /></RequireAuth>} />
+            <Route path="/blog/edit/:id" element={<RequireAuth><BlogEditor /></RequireAuth>} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/spherelearn" element={<SphereLearn />} />
             <Route path="/edvanta" element={<Edvanta />} />
